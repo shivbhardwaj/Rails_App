@@ -1,0 +1,27 @@
+<form action="/users/<%=@user.id%>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <p><label for="email">Email: </label>
+  <input type="text" id='email' name="user[email]" value="<%=@user.email%>"></p>
+  <p><label for="name">Name: </label>
+  <input type="text" id='name' name="user[name]" value="<%=@user.name%>"></p>
+  <p><label for="password">Password: </label>
+  <input type="text" id='password' name="user[password]"></p>
+  <p><label for="password_confirmation">Password Confirmation: </label>
+  <input type="text" id='password_confirmation' name="user[password_confirmation]"></p>
+  <input type="submit" value="Update">
+</form>
+<br>
+<form action="/users/<%=@user.id%>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Account">
+</form>
+
+<% if flash[:errors] %>
+<div>
+ <% flash[:errors].each do |e| %>
+  <h2><%=e%></h2>
+  <%end%>
+</div>
+<%end%>
